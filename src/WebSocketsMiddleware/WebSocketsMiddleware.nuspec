@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>WebSocketsMiddleware</id>
-        <version>0.0.0.0</version>
+        <!--<version>0.0.0.0</version>-->
         <authors>Damian Hickey</authors>
         <owners>Damian Hickey</owners>
         <projectUrl>https://github.com/damianh/Owin.EmbeddedHost</projectUrl>
@@ -14,7 +14,7 @@
         <dependencies/>
     </metadata>
     <files>
-        <file src="bin\Release\WebSocketsMiddleware.dll" target="lib\net45" />
+        <!--<file src="bin\Release\WebSocketsMiddleware.dll" target="lib\net451" />-->
         <!--<file src="bin\Release\WebSocketsMiddleware.xml" target="lib\net45" /> -->
     </files>
 </package>
