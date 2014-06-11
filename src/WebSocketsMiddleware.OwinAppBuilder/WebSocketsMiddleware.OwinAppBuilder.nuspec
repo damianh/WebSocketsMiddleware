@@ -1,21 +1,24 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
-        <id>WebSocketsMiddleware</id>
+        <id>WebSocketsMiddleware.OwinAppBuilder</id>
         <version>0.0.0.0</version>
         <authors>Damian Hickey</authors>
         <owners>Damian Hickey</owners>
         <projectUrl>https://github.com/damianh/WebSocketsMiddleware</projectUrl>
 		<licenseUrl>https://github.com/damianh/WebSocketsMiddleware/blob/master/LICENSE</licenseUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <title>WebSockets Middleware</title>
-        <description>Middleware to allow you to handle websocket requests in an OWIN pipeline. Suppoorts OWIN WebSockets spec v0.4</description>
+        <title>WebSockets Middleware AppBuilder integration</title>
+        <description>Integration package that provides extension methods for (the now deprecated) IAppBuilder from owin.dll</description>
         <tags>owin, websockets, embedded</tags>
         <frameworkAssemblies/>
-        <dependencies/>
+        <dependencies>
+			<dependency id="WebSocketsMiddleware" version="(1.0,2.0]"/>
+			<dependency id="Owin" version="(1.0,2.0]"/>
+		</dependencies>
     </metadata>
     <files>
-        <file src="bin\Release\WebSocketsMiddleware.dll" target="lib\net451" />
-        <file src="bin\Release\WebSocketsMiddleware.xml" target="lib\net451" />
+        <file src="bin\Release\WebSocketsMiddleware.OwinAppBuilder.dll" target="lib\net451" />
+        <file src="bin\Release\WebSocketsMiddleware.OwinAppBuilder.xml" target="lib\net451" />
     </files>
 </package>
