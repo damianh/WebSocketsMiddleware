@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketsMiddleware", "WebSocketsMiddleware\WebSocketsMiddleware.csproj", "{C30395C0-21AE-4E92-92F9-ED846C30C3A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketsMiddleware.Tests", "WebSocketsMiddleware.Tests\WebSocketsMiddleware.Tests.csproj", "{3261587E-2E44-488C-96C6-0A0B112122A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocketsMiddleware.OwinAppBuilder", "WebSocketsMiddleware.OwinAppBuilder\WebSocketsMiddleware.OwinAppBuilder.csproj", "{24F18D2C-E7A0-44DE-96D5-D807DC398E16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C30395C0-21AE-4E92-92F9-ED846C30C3A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30395C0-21AE-4E92-92F9-ED846C30C3A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30395C0-21AE-4E92-92F9-ED846C30C3A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30395C0-21AE-4E92-92F9-ED846C30C3A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3261587E-2E44-488C-96C6-0A0B112122A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3261587E-2E44-488C-96C6-0A0B112122A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3261587E-2E44-488C-96C6-0A0B112122A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3261587E-2E44-488C-96C6-0A0B112122A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24F18D2C-E7A0-44DE-96D5-D807DC398E16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24F18D2C-E7A0-44DE-96D5-D807DC398E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24F18D2C-E7A0-44DE-96D5-D807DC398E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24F18D2C-E7A0-44DE-96D5-D807DC398E16}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
