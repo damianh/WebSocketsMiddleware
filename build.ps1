@@ -1,9 +1,10 @@
 param(
 	[int]$buildNumber = 0
 	)
-
+Test-Path Env:\APPVEYOR_BUILD_NUMBER
 if(Test-Path Env:\APPVEYOR_BUILD_NUMBER){
 	$buildNumber = [int]$Env:APPVEYOR_BUILD_NUMBER
+	Write-Host "Using APPVEYOR_BUILD_NUMBER"
 }
 
 $packageConfigs = Get-ChildItem . -Recurse | where{$_.Name -eq "packages.config"}
