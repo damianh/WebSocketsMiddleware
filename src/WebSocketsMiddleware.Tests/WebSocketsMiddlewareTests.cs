@@ -50,15 +50,19 @@
 
         private static async Task<string> SendWebsocketMessage(string uri, string message)
         {
-            var clientWebSocket = new ClientWebSocket();
-            await clientWebSocket.ConnectAsync(new Uri(uri), CancellationToken.None);
-            byte[] bytes = Encoding.UTF8.GetBytes(message);
-            await clientWebSocket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, false, CancellationToken.None);
+            using (var clientWebSocket = new ClientWebSocket())
+            {
+                await clientWebSocket.ConnectAsync(new Uri(uri), CancellationToken.None);
+                byte[] bytes = Encoding.UTF8.GetBytes(message);
+                await
+                    clientWebSocket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, false,
+                        CancellationToken.None);
 
-            var buffer = new byte[1024];
-            WebSocketReceiveResult result =
-                await clientWebSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-            return Encoding.UTF8.GetString(buffer, 0, result.Count);
+                var buffer = new byte[1024];
+                WebSocketReceiveResult result =
+                    await clientWebSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+                return Encoding.UTF8.GetString(buffer, 0, result.Count);
+            }
         }
 
         private static async Task WebSocketReverseMessage(IWebSocketContext webSocketContext)
