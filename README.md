@@ -1,9 +1,7 @@
 WebSocketsMiddleware
 ====================
 
-- AppVeyor: [![Build status](https://ci.appveyor.com/api/projects/status/ox3wa91nq1wiw57t)](https://ci.appveyor.com/project/damianh/websocketsmiddleware)
-- WebSocketsMiddleware: [![NuGet Status](http://img.shields.io/nuget/v/WebSocketsMiddleware.svg?style=flat)](https://www.nuget.org/packages/WebSocketsMiddleware/)
-- WebScoketsMiddlware.OwinAppBuilder: [![NuGet Status](http://img.shields.io/nuget/v/WebSocketsMiddleware.OwinAppBuilder.svg?style=flat)](https://www.nuget.org/packages/WebSocketsMiddleware.OwinAppBuilder/)
+[![Build status](https://ci.appveyor.com/api/projects/status/ox3wa91nq1wiw57t)](https://ci.appveyor.com/project/damianh/websocketsmiddleware) [![NuGet Status](http://img.shields.io/nuget/v/WebSocketsMiddleware.svg?style=flat)](https://www.nuget.org/packages/WebSocketsMiddleware/) [![NuGet Status](http://img.shields.io/nuget/v/WebSocketsMiddleware.OwinAppBuilder.svg?style=flat)](https://www.nuget.org/packages/WebSocketsMiddleware.OwinAppBuilder/)
 
 Middleware to help you work with websockets in an owin pipeline.
 
