@@ -49,6 +49,17 @@
         }
 
         [Fact]
+        public async Task Should_have_request_env()
+        {
+            using (WebApp.Start("http://localhost:5000/", app => app.UseWebSockets(WebSocketCheckEnv)))
+            {
+                string response = await SendWebsocketMessage("ws://localhost:5000", string.Empty);
+
+                response.Should().Be("true");
+            }
+        }
+
+        [Fact]
         public async Task Can_have_http_and_websocket_at_same_uri()
         {
             using (WebApp.Start("http://localhost:5000/",
@@ -115,6 +126,27 @@
             {
                 await webSocketContext.Send(
                     new ArraySegment<byte>(buffer, 0, received.Count),
+                    received.MessageType,
+                    received.EndOfMessage);
+
+                received = await webSocketContext.Receive(new ArraySegment<byte>(buffer));
+            }
+
+            await webSocketContext.Close();
+        }
+
+        private static async Task WebSocketCheckEnv(IWebSocketContext webSocketContext)
+        {
+            var buffer = new byte[1024];
+            IWebSocketReceiveResult received = await webSocketContext.Receive(new ArraySegment<byte>(buffer));
+
+            while (!webSocketContext.ClientClosed)
+            {
+                bool haveEnv = webSocketContext.Environment != null;
+                byte[] bytes = Encoding.UTF8.GetBytes(haveEnv.ToString());
+
+                await webSocketContext.Send(
+                    new ArraySegment<byte>(bytes, 0, bytes.Length),
                     received.MessageType,
                     received.EndOfMessage);
 

@@ -1,6 +1,7 @@
 namespace WebSocketMiddleware
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -37,5 +38,10 @@ namespace WebSocketMiddleware
         ///   <c>true</c> if [client closed]; otherwise, <c>false</c>.
         /// </value>
         bool ClientClosed { get; }
+
+        /// <summary>
+        /// The OWIN environment.
+        /// </summary>
+        IDictionary<string, object> Environment { get; }
     }
 }

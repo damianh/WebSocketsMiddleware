@@ -84,7 +84,7 @@
                         return next(env);
                     }
 
-                    accept(null, webSocketContext => onAccept(new WebSocketContext(webSocketContext)));
+                    accept(null, websocketContextDict => onAccept(new WebSocketContext(websocketContextDict, env)));
 
                     return Task.FromResult<object>(null);
                 };
@@ -96,22 +96,24 @@
             private readonly WebSocketReceive _receive;
             private readonly WebSocketClose _close;
             private readonly CancellationToken _callCancelled;
+            private readonly IDictionary<string, object> _websocketContextDict;
             private readonly IDictionary<string, object> _env;
             private const string WebSocketClientCloseStatusKey = "websocket.ClientCloseStatus";
             private const string WebSocketClientCloseDescriptionKey = "websocket.ClientCloseDescription";
 
-            public WebSocketContext(IDictionary<string, object> env)
+            public WebSocketContext(IDictionary<string, object> websocketContextDict, IDictionary<string, object> env)
             {
+                _websocketContextDict = websocketContextDict;
                 _env = env;
-                _send = (WebSocketSend)env[WebSocketSendKey];
-                _receive = (WebSocketReceive)env[WebSocketReceiveKey];
-                _close = (WebSocketClose)env[WebSocketCloseKey];
-                _callCancelled = (CancellationToken)env[WebSocketCallCancelledKey];
+                _send = (WebSocketSend)websocketContextDict[WebSocketSendKey];
+                _receive = (WebSocketReceive)websocketContextDict[WebSocketReceiveKey];
+                _close = (WebSocketClose)websocketContextDict[WebSocketCloseKey];
+                _callCancelled = (CancellationToken)websocketContextDict[WebSocketCallCancelledKey];
             }
 
             public Task Close()
             {
-                return _close((int)_env[WebSocketClientCloseStatusKey], (string)_env[WebSocketClientCloseDescriptionKey], _callCancelled);
+                return _close((int)_websocketContextDict[WebSocketClientCloseStatusKey], (string)_websocketContextDict[WebSocketClientCloseDescriptionKey], _callCancelled);
             }
 
             public async Task<IWebSocketReceiveResult> Receive(ArraySegment<byte> buffer)
@@ -130,8 +132,13 @@
                 get
                 {
                     object status;
-                    return _env.TryGetValue(WebSocketClientCloseStatusKey, out status) && (int)status == 0;
+                    return _websocketContextDict.TryGetValue(WebSocketClientCloseStatusKey, out status) && (int)status == 0;
                 }
+            }
+
+            public IDictionary<string, object> Environment
+            {
+                get { return _env; }
             }
 
             private class ReceiveResult : IWebSocketReceiveResult
