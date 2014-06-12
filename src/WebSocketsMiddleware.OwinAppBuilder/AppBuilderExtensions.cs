@@ -13,11 +13,23 @@
         /// Add web socket middleware to owin pipeline that is built using IAppBuilder.
         /// </summary>
         /// <param name="appBuilder">The application builder.</param>
-        /// <<param name="onAccept">A delagete that is invoked when a websocket request has been received.</param>
+        /// <param name="onAccept">A delagete that is invoked when a websocket request has been received.</param>
         /// <returns>The application builder.</returns>
         public static IAppBuilder UseWebSockets(this IAppBuilder appBuilder, Func<IWebSocketContext, Task> onAccept)
         {
-            appBuilder.Use(WebSocketsMiddleware.UseWebsockets(onAccept));
+            return UseWebSockets(appBuilder, @"/", onAccept);
+        }
+
+        /// <summary>
+        /// Add web socket middleware to owin pipeline that is built using IAppBuilder.
+        /// </summary>
+        /// <param name="appBuilder">The application builder.</param>
+        /// <param name="path">The path to handle websocket requests.</param>
+        /// <param name="onAccept">A delagete that is invoked when a websocket request has been received.</param>
+        /// <returns>The application builder.</returns>
+        public static IAppBuilder UseWebSockets(this IAppBuilder appBuilder, string path, Func<IWebSocketContext, Task> onAccept)
+        {
+            appBuilder.Use(WebSocketsMiddleware.UseWebsockets(path, onAccept));
             return appBuilder;
         }
     }

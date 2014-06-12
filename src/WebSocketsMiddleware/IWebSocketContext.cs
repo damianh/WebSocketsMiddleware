@@ -4,7 +4,7 @@ namespace WebSocketMiddleware
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Represents a Web Socket Context
+    /// Represents a Web Socket context.
     /// </summary>
     public interface IWebSocketContext
     {

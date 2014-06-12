@@ -27,6 +27,28 @@
         }
 
         [Fact]
+        public void When_path_does_not_match_than_can_not_send_message()
+        {
+            using (WebApp.Start("http://localhost:5000/", app => app.UseWebSockets(WebSocketReverseMessage)))
+            {
+                Func<Task> act = () => SendWebsocketMessage("ws://localhost:5000/path", "Hello");
+                
+                act.ShouldThrow<WebSocketException>();
+            }
+        }
+
+        [Fact]
+        public async Task When_path_matches_than_can_send_message()
+        {
+            using (WebApp.Start("http://localhost:5000/", app => app.UseWebSockets("/path", WebSocketEcho)))
+            {
+                string response = await SendWebsocketMessage("ws://localhost:5000/path", "Hello");
+
+                response.Should().Be("Hello");
+            }
+        }
+
+        [Fact]
         public async Task Can_have_http_and_websocket_at_same_uri()
         {
             using (WebApp.Start("http://localhost:5000/",

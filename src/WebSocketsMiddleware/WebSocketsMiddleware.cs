@@ -43,6 +43,7 @@
     /// </summary>
     public static class WebSocketsMiddleware
     {
+        private const string OwinRequestPathKey = "owin.RequestPath";
         private const string WebSocketAcceptKey = "websocket.Accept";
         private const string WebSocketSendKey = "websocket.SendAsync";
         private const string WebSocketReceiveKey = "websocket.ReceiveAsync";
@@ -56,14 +57,30 @@
         /// <returns>An owin middleware delegate.</returns>
         public static MidFunc UseWebsockets(Func<IWebSocketContext, Task> onAccept)
         {
+            return UseWebsockets("/", onAccept);
+        }
+
+        /// <summary>
+        /// Use the websocket middleware in an owin pipeline. 
+        /// </summary>
+        /// <param name="path">The path to handle websocket requests.</param>
+        /// <param name="onAccept">A delagete that is invoked when a websocket request has been received.</param>
+        /// <returns>An owin middleware delegate.</returns>
+        public static MidFunc UseWebsockets(string path, Func<IWebSocketContext, Task> onAccept)
+        {
             return
                 next =>
                 env =>
                 {
+                    var requestPath = env.Get<string>(OwinRequestPathKey);
+                    if (requestPath != path)
+                    {
+                        return next(env);
+                    }
+
                     var accept = env.Get<WebSocketAccept>(WebSocketAcceptKey);
                     if (accept == null)
                     {
-                        // Not a websocket request
                         return next(env);
                     }
 
