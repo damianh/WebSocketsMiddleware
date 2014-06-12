@@ -18,9 +18,9 @@
         [Fact]
         public async Task Can_send_and_receive_message()
         {
-            using (WebApp.Start("http://localhost:5000/", app => app.UseWebSockets(WebSocketReverseMessage)))
+            using (WebApp.Start("http://localhost:15001/", app => app.UseWebSockets(WebSocketReverseMessage)))
             {
-                string response = await SendWebsocketMessage("ws://localhost:5000/", "Hello");
+                string response = await SendWebsocketMessage("ws://localhost:15001/", "Hello");
 
                 response.Should().Be("olleH");
             }
@@ -29,9 +29,9 @@
         [Fact]
         public void When_path_does_not_match_than_can_not_send_message()
         {
-            using (WebApp.Start("http://localhost:5000/", app => app.UseWebSockets(WebSocketReverseMessage)))
+            using (WebApp.Start("http://localhost:15001/", app => app.UseWebSockets(WebSocketReverseMessage)))
             {
-                Func<Task> act = () => SendWebsocketMessage("ws://localhost:5000/path", "Hello");
+                Func<Task> act = () => SendWebsocketMessage("ws://localhost:15001/path", "Hello");
                 
                 act.ShouldThrow<WebSocketException>();
             }
@@ -40,9 +40,9 @@
         [Fact]
         public async Task When_path_matches_than_can_send_message()
         {
-            using (WebApp.Start("http://localhost:5000/", app => app.UseWebSockets("/path", WebSocketEcho)))
+            using (WebApp.Start("http://localhost:15001/", app => app.UseWebSockets("/path", WebSocketEcho)))
             {
-                string response = await SendWebsocketMessage("ws://localhost:5000/path", "Hello");
+                string response = await SendWebsocketMessage("ws://localhost:15001/path", "Hello");
 
                 response.Should().Be("Hello");
             }
@@ -51,11 +51,11 @@
         [Fact]
         public async Task Should_have_request_env()
         {
-            using (WebApp.Start("http://localhost:5000/", app => app.UseWebSockets(WebSocketCheckEnv)))
+            using (WebApp.Start("http://localhost:15001/", app => app.UseWebSockets(WebSocketCheckEnv)))
             {
-                string response = await SendWebsocketMessage("ws://localhost:5000", string.Empty);
+                string response = await SendWebsocketMessage("ws://localhost:15001", "Hello");
 
-                response.Should().Be("true");
+                response.Should().Be("True");
             }
         }
 
