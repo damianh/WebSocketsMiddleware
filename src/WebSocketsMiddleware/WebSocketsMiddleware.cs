@@ -38,6 +38,9 @@
         bool, // end of message?
         int>; // count
 
+    /// <summary>
+    /// Represents an owin middleware that can handle web socket requests. 
+    /// </summary>
     public static class WebSocketsMiddleware
     {
         private const string WebSocketAcceptKey = "websocket.Accept";
@@ -46,6 +49,11 @@
         private const string WebSocketCloseKey = "websocket.CloseAsync";
         private const string WebSocketCallCancelledKey = "websocket.CallCancelled";
 
+        /// <summary>
+        /// Use the websocket middleware in an owin pipeline. 
+        /// </summary>
+        /// <param name="onAccept">A delagete that is invoked when a websocket request has been received.</param>
+        /// <returns>An owin middleware delegate.</returns>
         public static MidFunc UseWebsockets(Func<IWebSocketContext, Task> onAccept)
         {
             return
