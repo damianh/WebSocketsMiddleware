@@ -6,7 +6,7 @@
         <authors>Damian Hickey</authors>
         <owners>Damian Hickey</owners>
         <projectUrl>https://github.com/damianh/WebSocketsMiddleware</projectUrl>
-		<licenseUrl>https://github.com/damianh/WebSocketsMiddleware/blob/master/LICENSE</licenseUrl>
+    <licenseUrl>https://github.com/damianh/WebSocketsMiddleware/blob/master/LICENSE</licenseUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <title>WebSockets Middleware</title>
         <description>Middleware to allow you to handle websocket requests in an OWIN pipeline. Suppoorts OWIN WebSockets spec v0.4</description>
@@ -15,7 +15,7 @@
         <dependencies/>
     </metadata>
     <files>
-        <file src="bin\Release\WebSocketsMiddleware.dll" target="lib\net451" />
-        <file src="bin\Release\WebSocketsMiddleware.xml" target="lib\net451" />
+        <file src="bin\Release\WebSocketsMiddleware.dll" target="lib\net45" />
+        <file src="bin\Release\WebSocketsMiddleware.xml" target="lib\net45" />
     </files>
 </package>
