@@ -21,6 +21,10 @@ An asp.net vNext builder integration package will be forthcoming.
 
 See [the tests](https://github.com/damianh/WebSocketsMiddleware/blob/master/src/WebSocketsMiddleware.Tests/WebSocketsMiddlewareTests.cs) as examples of usage.
 
+#### Help
+
+[@randompunter](https://twitter.com/randompunter) or [OWIN room on Jabbr](https://jabbr.net/#/rooms/owin)
+
 ##### Developed with:
 
 [![Resharper](http://neventstore.org/images/logo_resharper_small.gif)](http://www.jetbrains.com/resharper/)
