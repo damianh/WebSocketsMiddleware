@@ -41,7 +41,7 @@ task RunTests -depends Compile {
 task CreateNuGetPackages -depends Compile {
 	$versionString = Get-Version $assemblyInfoFilePath
 	$version = New-Object Version $versionString
-	$packageVersion = $version.Major.ToString() + "." + $version.Minor.ToString() + "." + $version.Build.ToString()
+	$packageVersion = $version.Major.ToString() + "." + $version.Minor.ToString() + "." + $version.Build.ToString() + "-build" + $buildNumber.ToString().PadLeft(5,'0')
 	gci $srcDir -Recurse -Include *.nuspec | % {
 		exec { .$srcDir\.nuget\nuget.exe pack $_ -o $buildOutputDir -version $packageVersion }
 	}
