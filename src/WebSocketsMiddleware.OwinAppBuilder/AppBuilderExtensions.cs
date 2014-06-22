@@ -29,7 +29,7 @@
         /// <returns>The application builder.</returns>
         public static IAppBuilder UseWebSockets(this IAppBuilder appBuilder, string path, Func<IWebSocketContext, Task> onAccept)
         {
-            appBuilder.Use(WebSocketsMiddleware.UseWebsockets(path, onAccept));
+            appBuilder.Use(WebSockets.UseWebsockets(path, onAccept));
             return appBuilder;
         }
     }

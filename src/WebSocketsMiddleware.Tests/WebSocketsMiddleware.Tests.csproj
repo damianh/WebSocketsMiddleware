@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\SharedAssemblyInfo.cs" />
-    <Compile Include="WebSocketsMiddlewareTests.cs" />
+    <Compile Include="WebSocketsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
