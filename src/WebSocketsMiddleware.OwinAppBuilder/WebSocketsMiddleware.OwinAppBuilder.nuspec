@@ -13,7 +13,7 @@
         <tags>owin, websockets, embedded</tags>
         <frameworkAssemblies/>
         <dependencies>
-            <dependency id="WebSocketsMiddleware" version="[1.0,2.0)"/>
+            <dependency id="WebSocketsMiddleware" version="[1.1.2,2.0)"/>
             <dependency id="Owin" version="[1.0,2.0)"/>
         </dependencies>
     </metadata>
